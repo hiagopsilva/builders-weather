@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, Text, ImageBackground} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
+import GetLocation from 'react-native-get-location';
 
 import {
   Prevision,
@@ -23,9 +24,23 @@ import {
 } from './styles';
 
 const Home = () => {
+  const [location, setLocation] = useState();
+
+  GetLocation.getCurrentPosition({
+    enableHighAccuracy: true,
+    timeout: 15000,
+  })
+    .then((currentLocation) => {
+      setLocation(currentLocation);
+    })
+    .catch((error) => {
+      const {code, message} = error;
+      console.warn(code, message);
+    });
+
   return (
     <ImageBackground
-      source={require('../../assets/night.jpg')}
+      source={require('../../assets/morning.jpg')}
       style={{flex: 1}}>
       <Header>
         <HeaderTitle>Builders Weather</HeaderTitle>
