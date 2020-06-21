@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {View, Text, ImageBackground} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import GetLocation from 'react-native-get-location';
+import api from '../../services/api';
 
 import {
   Prevision,
@@ -24,19 +25,38 @@ import {
 } from './styles';
 
 const Home = () => {
-  const [location, setLocation] = useState();
+  const [position, setPosition] = useState();
+  const [DataPrevisionWeather, setDataPrevisionWeather] = useState();
 
-  GetLocation.getCurrentPosition({
-    enableHighAccuracy: true,
-    timeout: 15000,
-  })
-    .then((currentLocation) => {
-      setLocation(currentLocation);
+  useEffect(() => {
+    GetLocation.getCurrentPosition({
+      enableHighAccuracy: true,
+      timeout: 10000,
     })
-    .catch((error) => {
-      const {code, message} = error;
-      console.warn(code, message);
-    });
+      .then((currentLocation) => {
+        setPosition(currentLocation);
+      })
+      .catch((error) => {
+        const {code, message} = error;
+        console.warn(code, message);
+      });
+
+    async function getDataApi() {
+      const {latitude, longitude} = position;
+      // const response = await api.get(
+      //   `weather?lat=${latitude}&lon=${longitude}&&units=metric&lang=pt&APPID=13fe761107ed465fe627448321516f2f`,
+      // );
+      const response = await api.get(
+        'weather?lat=-23.6260084&lon=-46.7768741&&units=metric&lang=pt&APPID=13fe761107ed465fe627448321516f2f',
+      );
+
+      setDataPrevisionWeather(response.data);
+
+      console.log(DataPrevisionWeather);
+    }
+
+    getDataApi();
+  }, []);
 
   return (
     <ImageBackground
@@ -49,23 +69,29 @@ const Home = () => {
       <Prevision>
         <MainPrevision>
           <Icon name="sun" size={60} color="#fff" />
-          <TitleMain>20º</TitleMain>
+          <TitleMain>{DataPrevisionWeather.main.temp ^ 0}º</TitleMain>
         </MainPrevision>
 
         <FooterPrevision>
           <View>
-            <ValuePrevision>20º</ValuePrevision>
+            <ValuePrevision>
+              {DataPrevisionWeather.main.temp_min ^ 0}º
+            </ValuePrevision>
             <TitlePrevision>min</TitlePrevision>
           </View>
           <View>
-            <ValuePrevision>24º</ValuePrevision>
+            <ValuePrevision>
+              {DataPrevisionWeather.main.temp_max ^ 0}º
+            </ValuePrevision>
             <TitlePrevision>max</TitlePrevision>
           </View>
         </FooterPrevision>
 
         <LocationPrevision>
-          <TitleInfo>Chuvoso</TitleInfo>
-          <TitleLocation>Taboão da Serra</TitleLocation>
+          <TitleInfo>{DataPrevisionWeather.weather[0].description}</TitleInfo>
+          <TitleLocation>
+            {DataPrevisionWeather.name}, {DataPrevisionWeather.sys.country}
+          </TitleLocation>
         </LocationPrevision>
 
         <ButtonUpdate>
