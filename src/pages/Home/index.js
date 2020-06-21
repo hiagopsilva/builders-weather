@@ -22,36 +22,40 @@ import {
 } from './styles';
 
 const Home = () => {
-  const [position, setPosition] = useState();
-  const [DataPrevisionWeather, setDataPrevisionWeather] = useState('');
   const [loading, setLoading] = useState(true);
+  const [DataPrevisionWeather, setDataPrevisionWeather] = useState({
+    main: {
+      temp: 0,
+      temp_min: 0,
+      temp_max: 0,
+    },
+    weather: [
+      {
+        description: '',
+      },
+    ],
+    name: '',
+    sys: {
+      coutry: '',
+    },
+  });
 
   useEffect(() => {
-    GetLocation.getCurrentPosition({
+    getDataPrevison();
+  }, []);
+
+  async function getDataPrevison() {
+    setLoading(true);
+    const {latitude, longitude} = await GetLocation.getCurrentPosition({
       enableHighAccuracy: true,
       timeout: 10000,
-    })
-      .then((currentLocation) => {
-        setPosition(currentLocation);
-      })
-      .catch((error) => {
-        const {code, message} = error;
-        console.warn(code, message);
-      });
-  }, []);
+    });
 
-  useEffect(() => {
-    getDataApi();
-  }, []);
-
-  async function getDataApi() {
-    setLoading(true);
-    const {latitude, longitude} = position;
     // const response = await api.get(
     //   `weather?lat=${latitude}&lon=${longitude}&&units=metric&lang=pt&APPID=13fe761107ed465fe627448321516f2f`,
     // );
     const response = await api.get(
-      'weather?lat=-23.6260084&lon=-46.7768741&&units=metric&lang=pt&APPID=13fe761107ed465fe627448321516f2f',
+      'weather?lat=31.2243084&lon=120.9162634&&units=metric&lang=pt&APPID=13fe761107ed465fe627448321516f2f',
     );
 
     setDataPrevisionWeather(response.data);
@@ -68,13 +72,29 @@ const Home = () => {
 
       {loading == true ? (
         <ContainerLoading>
-          <ActivityIndicator color="#FFF" />
+          <ActivityIndicator color="#FFF" size="large" />
           <TextLoading>Carregando...</TextLoading>
         </ContainerLoading>
       ) : (
         <Prevision>
           <MainPrevision>
-            <Icon name="moon" size={60} color="#fff" />
+            {DataPrevisionWeather.weather[0].description == 'céu limpo' ? (
+              <Icon name="sun" size={60} color="#fff" />
+            ) : (
+              <></>
+            )}
+            {DataPrevisionWeather.weather[0].description ==
+              'céu pouco nublado' || 'nublado' ? (
+              <Icon name="cloud" size={60} color="#fff" />
+            ) : (
+              <></>
+            )}
+            {DataPrevisionWeather.weather[0].description === 'chuva fraca' ? (
+              <Icon name="cloud-rain" size={60} color="#fff" />
+            ) : (
+              <></>
+            )}
+            {/* <Icon name="moon" size={60} color="#fff" /> */}
             <TitleMain>{DataPrevisionWeather.main.temp ^ 0}º</TitleMain>
           </MainPrevision>
 
@@ -106,7 +126,7 @@ const Home = () => {
               <Icon name="moon" size={60} color="#fff" /> */}
         </Prevision>
       )}
-      <ButtonUpdate onPress={() => getDataApi()}>
+      <ButtonUpdate onPress={() => getDataPrevison()}>
         <Text>Atualizar</Text>
       </ButtonUpdate>
     </ImageBackground>

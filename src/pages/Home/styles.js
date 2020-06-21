@@ -48,7 +48,7 @@ export const LocationPrevision = styled.View`
 
 export const TitleInfo = styled.Text`
   color: #fff;
-  font-size: 40px;
+  font-size: 30px;
   text-transform: capitalize;
 `;
 
