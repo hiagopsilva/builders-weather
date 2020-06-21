@@ -31,8 +31,6 @@ export const FooterPrevision = styled.View`
   justify-content: space-around;
 `;
 
-export const MinPrevision = styled.View``;
-
 export const TitlePrevision = styled.Text`
   color: #fff;
   font-size: 16px;
@@ -43,19 +41,15 @@ export const ValuePrevision = styled.Text`
   font-size: 40px;
 `;
 
-export const MaxPrevision = styled.View``;
-
-export const TitleMax = styled.Text``;
-
-export const TitleMaxValue = styled.Text``;
-
 export const LocationPrevision = styled.View`
   padding-horizontal: 15px;
+  padding-bottom: 70px;
 `;
 
 export const TitleInfo = styled.Text`
   color: #fff;
   font-size: 40px;
+  text-transform: capitalize;
 `;
 
 export const TitleLocation = styled.Text`
@@ -76,4 +70,17 @@ export const ButtonUpdate = styled.TouchableOpacity`
   border-radius: 5px;
 `;
 
-export const TextButton = styled.Text``;
+export const ContainerLoading = styled.View`
+  flex: 1;
+  padding-top: 50px;
+
+  justify-content: center;
+  align-items: center;
+`;
+
+export const TextLoading = styled.Text`
+  color: #fff;
+  font-size: 16px;
+
+  margin-top: 10px;
+`;
