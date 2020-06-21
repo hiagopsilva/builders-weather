@@ -1,19 +1,11 @@
 import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
 
-const App: () => React$Node = () => {
+import Home from './src/pages/Home';
+
+const App = () => {
   return (
     <>
-      <View>
-        <Text>Hello World</Text>
-      </View>
+      <Home />
     </>
   );
 };
