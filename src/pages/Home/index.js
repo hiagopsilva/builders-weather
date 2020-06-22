@@ -33,7 +33,7 @@ const Home = () => {
     getDataPrevison();
   }, []);
 
-  async function getDataPrevison() {
+  async function getDataPrevision() {
     setLoading(true);
     const {latitude, longitude} = await GetLocation.getCurrentPosition({
       enableHighAccuracy: true,
@@ -57,7 +57,7 @@ const Home = () => {
       ) : (
         <PrevisionComponent DataPrevision={DataPrevisionWeather} />
       )}
-      <ButtonComponent getDataPrevision={() => getDataPrevison()} />
+      <ButtonComponent functionPrevision={() => getDataPrevision()} />
     </ImageBackground>
   );
 };
