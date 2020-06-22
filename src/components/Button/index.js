@@ -2,9 +2,9 @@ import React from 'react';
 
 import {ButtonUpdate, ButtonText} from './styles';
 
-const Button = ({functionPrevision}) => {
+const Button = ({getDataPrevision}) => {
   return (
-    <ButtonUpdate onPress={functionPrevision}>
+    <ButtonUpdate onPress={getDataPrevision}>
       <ButtonText>Atualizar</ButtonText>
     </ButtonUpdate>
   );
