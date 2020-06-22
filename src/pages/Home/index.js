@@ -30,7 +30,7 @@ const Home = () => {
   });
 
   useEffect(() => {
-    getDataPrevison();
+    getDataPrevision();
   }, []);
 
   async function getDataPrevision() {
@@ -57,7 +57,7 @@ const Home = () => {
       ) : (
         <PrevisionComponent DataPrevision={DataPrevisionWeather} />
       )}
-      <ButtonComponent functionPrevision={() => getDataPrevision()} />
+      <ButtonComponent getDataPrevision={() => getDataPrevision()} />
     </ImageBackground>
   );
 };
