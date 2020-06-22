@@ -8,11 +8,10 @@ import PrevisionComponent from '../../components/Prevision';
 import Loading from '../../components/Loading';
 import ButtonComponent from '../../components/Button';
 
-import Night from '../../assets/night.jpg';
+import Background from '../../assets/night.jpg';
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
-  const [currentHour, setCurrentHour] = useState();
   const [DataPrevisionWeather, setDataPrevisionWeather] = useState({
     main: {
       temp: 0,
@@ -32,7 +31,6 @@ const Home = () => {
 
   useEffect(() => {
     getDataPrevison();
-    getHour();
   }, []);
 
   async function getDataPrevison() {
@@ -42,26 +40,16 @@ const Home = () => {
       timeout: 10000,
     });
 
-    // const response = await api.get(
-    //   `weather?lat=${latitude}&lon=${longitude}&&units=metric&lang=pt&APPID=13fe761107ed465fe627448321516f2f`,
-    // );
     const response = await api.get(
-      'weather?lat=-23.6260084&lon=-46.7768741&&units=metric&lang=pt&APPID=13fe761107ed465fe627448321516f2f',
+      `weather?lat=${latitude}&lon=${longitude}&&units=metric&lang=pt&APPID=13fe761107ed465fe627448321516f2f`,
     );
 
     setDataPrevisionWeather(response.data);
     setLoading(false);
   }
 
-  function getHour() {
-    const dataHours = new Date();
-    const now = dataHours.getHours();
-
-    setCurrentHour(now);
-  }
-
   return (
-    <ImageBackground source={Night} style={{flex: 1}}>
+    <ImageBackground source={Background} style={{flex: 1}}>
       <HeaderComponent />
 
       {loading == true ? (
