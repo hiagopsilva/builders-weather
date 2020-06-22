@@ -23,6 +23,7 @@ import {
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
+  const [currentHour, setCurrentHour] = useState();
   const [DataPrevisionWeather, setDataPrevisionWeather] = useState({
     main: {
       temp: 0,
@@ -42,7 +43,15 @@ const Home = () => {
 
   useEffect(() => {
     getDataPrevison();
+    getHour();
   }, []);
+
+  function getHour() {
+    const dataHours = new Date();
+    const now = dataHours.getHours();
+
+    setCurrentHour(now);
+  }
 
   async function getDataPrevison() {
     setLoading(true);
@@ -51,11 +60,8 @@ const Home = () => {
       timeout: 10000,
     });
 
-    // const response = await api.get(
-    //   `weather?lat=${latitude}&lon=${longitude}&&units=metric&lang=pt&APPID=13fe761107ed465fe627448321516f2f`,
-    // );
     const response = await api.get(
-      'weather?lat=31.2243084&lon=120.9162634&&units=metric&lang=pt&APPID=13fe761107ed465fe627448321516f2f',
+      `weather?lat=${latitude}&lon=${longitude}&&units=metric&lang=pt&APPID=13fe761107ed465fe627448321516f2f`,
     );
 
     setDataPrevisionWeather(response.data);
@@ -67,7 +73,9 @@ const Home = () => {
       source={require('../../assets/morning.jpg')}
       style={{flex: 1}}>
       <Header>
-        <HeaderTitle>Builders Weather</HeaderTitle>
+        <HeaderTitle>
+          Challenge Builders <Icon name="sun" size={20} color="#fff" />
+        </HeaderTitle>
       </Header>
 
       {loading == true ? (
@@ -78,23 +86,37 @@ const Home = () => {
       ) : (
         <Prevision>
           <MainPrevision>
-            {DataPrevisionWeather.weather[0].description == 'céu limpo' ? (
+            {DataPrevisionWeather.weather[0].description == 'céu limpo' &&
+            currentHour <= 18 &&
+            currentHour >= 5 ? (
               <Icon name="sun" size={60} color="#fff" />
             ) : (
               <></>
             )}
-            {DataPrevisionWeather.weather[0].description ==
-              'céu pouco nublado' || 'nublado' ? (
-              <Icon name="cloud" size={60} color="#fff" />
+            {DataPrevisionWeather.weather[0].description == 'nublado' ||
+            DataPrevisionWeather.weather[0].description ==
+              'céu pouco nublado' ||
+            DataPrevisionWeather.weather[0].description ==
+              'nuvens dispersas' ? (
+              <>
+                <Icon name="cloud" size={60} color="#fff" />
+              </>
             ) : (
               <></>
             )}
-            {DataPrevisionWeather.weather[0].description === 'chuva fraca' ? (
+            {DataPrevisionWeather.weather[0].description == 'chuva fraca' ||
+            DataPrevisionWeather.weather[0].description == 'chuva forte' ? (
               <Icon name="cloud-rain" size={60} color="#fff" />
             ) : (
               <></>
             )}
-            {/* <Icon name="moon" size={60} color="#fff" /> */}
+            {(DataPrevisionWeather.weather[0].description == 'céu limpo' &&
+              currentHour >= 18) ||
+            currentHour <= 5 ? (
+              <Icon name="moon" size={60} color="#fff" />
+            ) : (
+              <></>
+            )}
             <TitleMain>{DataPrevisionWeather.main.temp ^ 0}º</TitleMain>
           </MainPrevision>
 
@@ -119,11 +141,6 @@ const Home = () => {
               {DataPrevisionWeather.name}, {DataPrevisionWeather.sys.country}
             </TitleLocation>
           </LocationPrevision>
-
-          {/* <Icon name="sun" size={60} color="#fff" />
-              <Icon name="cloud" size={60} color="#fff" />
-              <Icon name="cloud-rain" size={60} color="#fff" />
-              <Icon name="moon" size={60} color="#fff" /> */}
         </Prevision>
       )}
       <ButtonUpdate onPress={() => getDataPrevison()}>
