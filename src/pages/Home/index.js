@@ -42,8 +42,11 @@ const Home = () => {
       timeout: 10000,
     });
 
+    // const response = await api.get(
+    //   `weather?lat=${latitude}&lon=${longitude}&&units=metric&lang=pt&APPID=13fe761107ed465fe627448321516f2f`,
+    // );
     const response = await api.get(
-      `weather?lat=${latitude}&lon=${longitude}&&units=metric&lang=pt&APPID=13fe761107ed465fe627448321516f2f`,
+      'weather?lat=-23.6260084&lon=-46.7768741&&units=metric&lang=pt&APPID=13fe761107ed465fe627448321516f2f',
     );
 
     setDataPrevisionWeather(response.data);
