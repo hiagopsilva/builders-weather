@@ -18,21 +18,19 @@ const Home: React.FC<Props> = ({
   loading,
   dataPrevisionWeather,
   getDataPrevision,
-}) => {
-  return (
-    <Wrapper>
-      <HeaderStyled />
+}) => (
+  <Wrapper>
+    <HeaderStyled />
 
-      {loading ? (
-        <LoadingStyled />
-      ) : (
-        <>
-          <PrevisionStyled DataPrevision={dataPrevisionWeather} />
-          <ButtonStyled onPress={getDataPrevision} />
-        </>
-      )}
-    </Wrapper>
-  );
-};
+    {loading ? (
+      <LoadingStyled />
+    ) : (
+      <>
+        <PrevisionStyled DataPrevision={dataPrevisionWeather} />
+        <ButtonStyled onPress={getDataPrevision} />
+      </>
+    )}
+  </Wrapper>
+);
 
 export default Home;

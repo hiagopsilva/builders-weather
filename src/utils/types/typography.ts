@@ -1,4 +1,5 @@
-import {StyleProp, TextStyle} from 'react-native';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { StyleProp, TextStyle } from 'react-native';
 
 export type ButtonVariants =
   | 'primary'

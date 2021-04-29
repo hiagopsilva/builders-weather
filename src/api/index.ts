@@ -1,1 +1,1 @@
-export {default as WeatherAPI} from './weather.api';
+export { default as WeatherAPI } from './weather.api';

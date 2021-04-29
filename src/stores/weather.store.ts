@@ -1,7 +1,7 @@
-import {action, observable} from 'mobx';
-import {persist} from 'mobx-persist';
+import { action, observable } from 'mobx';
+import { persist } from 'mobx-persist';
 import GetLocation from 'react-native-get-location';
-import {WeatherAPI} from '~/api';
+import { WeatherAPI } from '~/api';
 
 class WeatherStore {
   @observable
@@ -9,7 +9,7 @@ class WeatherStore {
   location: Partial<ValuesLocation> = {};
 
   @observable
-  loading: boolean = false;
+  loading = false;
 
   @observable
   @persist('object')
@@ -31,9 +31,9 @@ class WeatherStore {
   };
 
   @action
-  getDataPrevision = async () => {
+  getDataPrevision = async (): Promise<void> => {
     this.toggleLoading();
-    const {latitude, longitude} = await GetLocation.getCurrentPosition({
+    const { latitude, longitude } = await GetLocation.getCurrentPosition({
       enableHighAccuracy: true,
       timeout: 10000,
     });
@@ -48,7 +48,7 @@ class WeatherStore {
   };
 
   @action
-  toggleLoading = () => {
+  toggleLoading = (): void => {
     this.loading = !this.loading;
   };
 }

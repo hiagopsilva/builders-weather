@@ -1,4 +1,3 @@
-// import {RoutingType} from '~/utils';
 import WeatherStore from './weather.store';
 
 class RootStore {
@@ -11,5 +10,5 @@ class RootStore {
 
 const store = new RootStore();
 
-export {WeatherStore};
+export { WeatherStore };
 export default store;
