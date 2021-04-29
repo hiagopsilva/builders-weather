@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { inject, observer } from 'mobx-react';
 import { WeatherStore } from '~/stores';
@@ -18,7 +19,6 @@ const HomeContainer: React.FC<Props> = ({ weather }) => {
   };
   useEffect(() => {
     getDataPrevision();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
