@@ -9,9 +9,6 @@ class WeatherStore {
   location: Partial<ValuesLocation> = {};
 
   @observable
-  loading = false;
-
-  @observable
   @persist('object')
   dataPrevision: Partial<ValuesDataPrevision> = {
     main: {
@@ -32,7 +29,6 @@ class WeatherStore {
 
   @action
   getDataPrevision = async (): Promise<void> => {
-    this.toggleLoading();
     const { latitude, longitude } = await GetLocation.getCurrentPosition({
       enableHighAccuracy: true,
       timeout: 10000,
@@ -43,13 +39,6 @@ class WeatherStore {
     if (response) {
       this.dataPrevision = response;
     }
-
-    this.toggleLoading();
-  };
-
-  @action
-  toggleLoading = (): void => {
-    this.loading = !this.loading;
   };
 }
 
