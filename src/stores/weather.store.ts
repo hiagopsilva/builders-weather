@@ -1,6 +1,6 @@
+import GetLocation from 'react-native-get-location';
 import { action, observable } from 'mobx';
 import { persist } from 'mobx-persist';
-import GetLocation from 'react-native-get-location';
 import { WeatherAPI } from '~/api';
 
 class WeatherStore {
