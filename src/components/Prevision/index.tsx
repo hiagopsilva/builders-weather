@@ -22,26 +22,17 @@ const Prevision = (dataPrevision: ValuesPrevision): React.ReactElement => {
     <PrevisionContainer>
       <MainPrevision>
         <Icon name="cloud" size={60} color="#fff" />
-        <TitleMain>
-          {DataPrevision.main.temp ^ 0}
-          º
-        </TitleMain>
+        <TitleMain>{DataPrevision.main.temp ^ 0}º</TitleMain>
       </MainPrevision>
 
       <WrapperDataPrevision>
         <WrapperPrevision>
-          <Value>
-            {DataPrevision.main.temp_min ^ 0}
-            º
-          </Value>
+          <Value>{DataPrevision.main.temp_min ^ 0}º</Value>
           <Title>min</Title>
         </WrapperPrevision>
 
         <WrapperPrevision>
-          <Value>
-            {DataPrevision.main.temp_max ^ 0}
-            º
-          </Value>
+          <Value>{DataPrevision.main.temp_max ^ 0}º</Value>
           <Title>max</Title>
         </WrapperPrevision>
       </WrapperDataPrevision>
@@ -49,10 +40,7 @@ const Prevision = (dataPrevision: ValuesPrevision): React.ReactElement => {
       <WrapperLocation>
         <TitleInfo>{DataPrevision.weather[0].description}</TitleInfo>
         <TitleLocation>
-          {DataPrevision.name}
-          ,
-          {' '}
-          {DataPrevision.sys.country}
+          {DataPrevision.name}, {DataPrevision.sys.country}
         </TitleLocation>
       </WrapperLocation>
     </PrevisionContainer>

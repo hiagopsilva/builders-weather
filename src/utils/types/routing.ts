@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 type RouteParams = Record<string, any>;
 
 export type RoutingParamsType = 'HOME' | 'LOGIN';

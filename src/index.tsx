@@ -6,13 +6,13 @@ import { Provider } from 'mobx-react';
 import store from '~/stores';
 import Routes from '~/routes';
 
-function App(): React.ReactElement {
+const App = (): React.ReactElement => {
   return (
     <Provider {...store}>
       <StatusBar barStyle="light-content" backgroundColor="#9A01FE" />
       <Routes />
     </Provider>
   );
-}
+};
 
 export default App;

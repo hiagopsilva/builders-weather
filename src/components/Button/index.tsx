@@ -6,7 +6,7 @@ type Props = {
   onPress: () => void;
 };
 
-const Button: React.FC<Props> = (onPress) => (
+const Button: React.FC<Props> = onPress => (
   <ButtonUpdate {...onPress}>
     <ButtonText>Atualizar</ButtonText>
   </ButtonUpdate>
