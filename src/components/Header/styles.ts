@@ -1,15 +1,19 @@
-import { getTheme } from '@platformbuilders/helpers';
 import styled from 'styled-components/native';
+import { moderateScale } from '~/theme';
+import { getTheme } from '~/utils';
 
 // Colors
 const primaryMain = getTheme('primary.main');
 
-export const HeaderContainer = styled.View`
+// Spacings
+const smallSpacing = getTheme('smallSpacing');
+
+export const Wrapper = styled.View`
   align-items: center;
-  padding-top: 10px;
+  padding-top: ${smallSpacing};
 `;
 
-export const HeaderTitle = styled.Text`
+export const Title = styled.Text`
   color: ${primaryMain};
-  font-size: 20px;
+  font-size: ${moderateScale(20)};
 `;

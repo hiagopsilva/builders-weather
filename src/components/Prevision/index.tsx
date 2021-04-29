@@ -3,7 +3,7 @@ import React from 'react';
 import Icon from 'react-native-vector-icons/Feather';
 
 import {
-  PrevisionContainer,
+  Wrapper,
   MainPrevision,
   TitleMain,
   WrapperPrevision,
@@ -19,7 +19,7 @@ const Prevision = (dataPrevision: ValuesPrevision): React.ReactElement => {
   const { DataPrevision } = dataPrevision;
 
   return (
-    <PrevisionContainer>
+    <Wrapper>
       <MainPrevision>
         <Icon name="cloud" size={60} color="#fff" />
         <TitleMain>{DataPrevision.main.temp ^ 0}º</TitleMain>
@@ -43,7 +43,7 @@ const Prevision = (dataPrevision: ValuesPrevision): React.ReactElement => {
           {DataPrevision.name}, {DataPrevision.sys.country}
         </TitleLocation>
       </WrapperLocation>
-    </PrevisionContainer>
+    </Wrapper>
   );
 };
 

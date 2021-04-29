@@ -1,20 +1,25 @@
-import { getTheme } from '@platformbuilders/helpers';
 import styled from 'styled-components/native';
+import { moderateScale } from '~/theme';
+import { getTheme } from '~/utils';
 
 // Colors
 const primaryMain = getTheme('primary.main');
 
-export const ContainerLoading = styled.View`
+// Spacing
+const smallSpacing = getTheme('smallSpacing');
+const largeSpacing = getTheme('largeSpacing');
+
+export const Wrapper = styled.View`
   flex: 1;
-  padding-top: 50px;
+  padding-top: ${largeSpacing};
 
   justify-content: center;
   align-items: center;
 `;
 
-export const TextLoading = styled.Text`
+export const Text = styled.Text`
   color: ${primaryMain};
-  font-size: 16px;
+  font-size: ${moderateScale(16)};
 
-  margin-top: 10px;
+  margin-top: ${smallSpacing};
 `;

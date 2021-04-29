@@ -1,15 +1,15 @@
 import React from 'react';
 
-import { ButtonUpdate, ButtonText } from './styles';
+import { Wrapper, ButtonText } from './styles';
 
 type Props = {
   onPress: () => void;
 };
 
 const Button: React.FC<Props> = onPress => (
-  <ButtonUpdate {...onPress}>
+  <Wrapper {...onPress}>
     <ButtonText>Atualizar</ButtonText>
-  </ButtonUpdate>
+  </Wrapper>
 );
 
 export default Button;
