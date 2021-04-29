@@ -6,6 +6,7 @@ import { ThemeProvider } from 'styled-components';
 import Routes from '~/routes';
 import store from '~/stores';
 import { colors, radius, spacings } from '~/theme';
+import './utils/config/reactotron';
 
 const theme = { ...colors, ...spacings, ...radius };
 
