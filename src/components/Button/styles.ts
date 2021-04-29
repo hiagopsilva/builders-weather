@@ -1,10 +1,14 @@
+import { getTheme } from '@platformbuilders/helpers';
 import styled from 'styled-components/native';
+
+// Colors
+const primaryMain = getTheme('primary.main');
 
 export const ButtonUpdate = styled.TouchableOpacity`
   width: 200px;
   height: 40px;
   margin-bottom: 40px;
-  background-color: #fff;
+  background-color: ${primaryMain};
 
   align-self: center;
   align-items: center;

@@ -2,7 +2,7 @@ import {
   moderateScale as mdscl,
   scale as sc,
   verticalScale as vtscl,
-} from '~/utils/modules';
+} from '~/utils';
 
 export { default as colors } from './colors';
 export { default as radius } from './radius';

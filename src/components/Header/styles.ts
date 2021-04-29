@@ -1,4 +1,8 @@
+import { getTheme } from '@platformbuilders/helpers';
 import styled from 'styled-components/native';
+
+// Colors
+const primaryMain = getTheme('primary.main');
 
 export const HeaderContainer = styled.View`
   align-items: center;
@@ -6,6 +10,6 @@ export const HeaderContainer = styled.View`
 `;
 
 export const HeaderTitle = styled.Text`
-  color: #fff;
+  color: ${primaryMain};
   font-size: 20px;
 `;

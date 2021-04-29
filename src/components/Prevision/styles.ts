@@ -1,4 +1,8 @@
+import { getTheme } from '@platformbuilders/helpers';
 import styled from 'styled-components/native';
+
+// Colors
+const primaryMain = getTheme('primary.main');
 
 export const PrevisionContainer = styled.View`
   flex: 1;
@@ -12,7 +16,7 @@ export const MainPrevision = styled.View`
 
 export const TitleMain = styled.Text`
   font-size: 60px;
-  color: #fff;
+  color: ${primaryMain};
 `;
 
 export const WrapperDataPrevision = styled.View`
@@ -21,12 +25,12 @@ export const WrapperDataPrevision = styled.View`
 `;
 
 export const Title = styled.Text`
-  color: #fff;
+  color: ${primaryMain};
   font-size: 16px;
 `;
 
 export const Value = styled.Text`
-  color: #fff;
+  color: ${primaryMain};
   font-size: 40px;
 `;
 
@@ -35,13 +39,13 @@ export const WrapperLocation = styled.View`
 `;
 
 export const TitleInfo = styled.Text`
-  color: #fff;
+  color: ${primaryMain};
   font-size: 30px;
   text-transform: capitalize;
 `;
 
 export const TitleLocation = styled.Text`
-  color: #fff;
+  color: ${primaryMain};
   font-size: 20px;
 `;
 
