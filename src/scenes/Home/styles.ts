@@ -1,10 +1,10 @@
 import { ImageBackground } from 'react-native';
 import styled from 'styled-components/native';
-import BackgroundImage from '~/assets/night.jpg';
+import { BackgroundNight } from '~/assets';
 import { Header, Prevision, Loading, Button } from '~/components';
 
 export const Wrapper = styled(ImageBackground).attrs({
-  source: BackgroundImage,
+  source: BackgroundNight,
 })`
   flex: 1;
 `;
