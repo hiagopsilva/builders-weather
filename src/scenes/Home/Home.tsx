@@ -23,7 +23,6 @@ const Home: React.FC<Props> = ({
     <Wrapper>
       <HeaderStyled />
 
-      {console.log(dataPrevisionWeather)}
       {loading ? (
         <LoadingStyled />
       ) : (
