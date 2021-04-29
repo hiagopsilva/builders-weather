@@ -4,7 +4,7 @@ class WeatherAPI {
   static getDataWeather = async (
     latitude?: number,
     longitude?: number,
-  ): Promise<any | null> => {
+  ): Promise<ValuesDataPrevision | null> => {
     try {
       const {data} = await request.get(
         `weather?lat=${latitude?.toString()}&lon=${longitude?.toString()}&&units=metric&lang=pt&APPID=13fe761107ed465fe627448321516f2f`,

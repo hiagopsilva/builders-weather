@@ -10,25 +10,25 @@ import {
 
 type Props = {
   loading: boolean;
-  DataPrevisionWeather?: Partial<ValuesDataPrevision>;
+  dataPrevisionWeather: Partial<ValuesDataPrevision>;
   getDataPrevision: () => void;
 };
 
 const Home: React.FC<Props> = ({
   loading,
-  DataPrevisionWeather,
+  dataPrevisionWeather,
   getDataPrevision,
 }) => {
   return (
     <Wrapper>
       <HeaderStyled />
 
-      {console.log(loading)}
+      {console.log(dataPrevisionWeather)}
       {loading ? (
         <LoadingStyled />
       ) : (
         <>
-          <PrevisionStyled DataPrevision={DataPrevisionWeather} />
+          <PrevisionStyled DataPrevision={dataPrevisionWeather} />
           <ButtonStyled onPress={getDataPrevision} />
         </>
       )}

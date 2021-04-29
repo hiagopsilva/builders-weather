@@ -24,7 +24,7 @@ const HomeContainer: React.FC<Props> = ({weather}) => {
   return (
     <Home
       loading={loading}
-      DataPrevisionWeather={weather.dataPrevision}
+      dataPrevisionWeather={weather.dataPrevision}
       getDataPrevision={weather.getDataPrevision}
     />
   );

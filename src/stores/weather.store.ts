@@ -41,7 +41,7 @@ class WeatherStore {
     const response = await WeatherAPI.getDataWeather(latitude, longitude);
 
     if (response) {
-      this.dataPrevision = response.data;
+      this.dataPrevision = response;
     }
 
     this.toggleLoading();
@@ -49,7 +49,6 @@ class WeatherStore {
 
   @action
   toggleLoading = () => {
-    console.log('AQUIIIIIII');
     this.loading = !this.loading;
   };
 }

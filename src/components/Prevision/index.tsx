@@ -18,8 +18,6 @@ import {
 const Prevision = (dataPrevision: ValuesPrevision) => {
   const {DataPrevision} = dataPrevision;
 
-  console.log(DataPrevision);
-
   return (
     <PrevisionContainer>
       <MainPrevision>
