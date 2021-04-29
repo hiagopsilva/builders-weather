@@ -1,7 +1,7 @@
 import {inject, observer} from 'mobx-react';
 import React, {useEffect, useState} from 'react';
 import Home from './Home';
-import {WeatherStore} from '../../stores';
+import {WeatherStore} from '~/stores';
 
 type Props = {
   weather: WeatherStore;
