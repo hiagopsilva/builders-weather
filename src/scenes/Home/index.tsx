@@ -17,6 +17,7 @@ const HomeContainer: React.FC<Props> = ({ weather }) => {
 
     setLoading(false);
   };
+
   useEffect(() => {
     getDataPrevision();
   }, []);
@@ -25,7 +26,7 @@ const HomeContainer: React.FC<Props> = ({ weather }) => {
     <Home
       loading={loading}
       dataPrevisionWeather={weather.dataPrevision}
-      getDataPrevision={weather.getDataPrevision}
+      getDataPrevision={getDataPrevision}
     />
   );
 };
