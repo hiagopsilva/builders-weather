@@ -15,7 +15,7 @@ const App = (): React.ReactElement => {
   return (
     <Provider {...store}>
       <ThemeProvider theme={theme}>
-        <StatusBar barStyle="light-content" backgroundColor="#9A01FE" />
+        <StatusBar barStyle="light-content" backgroundColor="#6A48A8" />
         <Routes />
         <AlertMessage />
       </ThemeProvider>
